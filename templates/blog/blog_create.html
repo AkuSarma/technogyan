@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<center>
+        <h3>Create blog</h3>
+        
+        <a href="{% url 'blogHome' %}">Go Back</a>
+        
+        <form method="POST" action="" id="form-upde">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="submit">
+        </form>
+</center>
+
+{% endblock content %}

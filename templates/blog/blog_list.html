@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url(https://random.imagecdn.app/1900/1265)">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Technogyan</h1>
+                        <span class="subheading">Simple blogs for simple people 🙂</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- main content -->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                {% for each in object_list %}
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="{% url 'detail' each.id %}">
+                        <h2 class="post-title">{{ each.title }}</h2>
+                        <h3 class="post-subtitle">{{ each.minidescription }}</h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">{{ each.author }}</a>
+                        on {{ each.uploadTime }}
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                {% empty %}
+                <h2 class="post-title">NO posts are available</h2>
+                {% endfor %}
+                </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

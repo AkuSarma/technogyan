@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(https://random.imagecdn.app/1900/1265)">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ object.title }}</h1>
+                    <h2 class="subheading">{{ object.minidescription }}</h2>
+                    <span class="meta">
+                        Posted by
+                        {{ object.author.id }}
+                        on {{ object.uploadTime }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        {% if user == object.author%}
+        <a href="{% url 'blogUpdate' object.id %}">Edit blog</a>
+        <a href="{% url 'blogDelete' object.id %}">Delete blog</a>
+        {% endif %}
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>{{ object.maintext }}</p>
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock content %}

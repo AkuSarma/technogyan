@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<form method="post" style="margin-top: 6rem;">
+    {% csrf_token %}
+     <p>Are you sure you want to delete "{{ object }}"?</p>
+     <input type="submit" value="Confirm">
+</form>
+{% endblock %}
